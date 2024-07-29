@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Job Listings</h1>
+    <ul>
+        {% for job in jobs.payload %}
+            <li>{{ job.title }} - {{ job.workfields[0].name }}</li>
+        {% endfor %}
+    </ul>
+    <div>
+        {% if page > 1 %}
+            <a href="{{ path('job_list', {page: page - 1}) }}">Previous</a>
+        {% endif %}
+        <a href="{{ path('job_list', {page: page + 1}) }}">Next</a>
+    </div>
+{% endblock %}
